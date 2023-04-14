@@ -39,9 +39,9 @@ public class Equations_2_2_6 {
             return null;
         }
         else{
-            double D = arg[0][0] *arg[1][1] - arg[1][0]*arg[0][1];
-            double D1 = arg[0][1] *arg[1][2] - arg[1][1]*arg[0][2];
-            double D2 = arg[0][0] *arg[1][2] - arg[1][0]*arg[0][2];
+            double D = arg[0][0]*arg[1][1] - arg[1][0]*arg[0][1];
+            double D1 = arg[1][1]*arg[0][2] - arg[0][1]*arg[1][2];
+            double D2 = arg[0][0]*arg[1][2] - arg[1][0]*arg[0][2];
             double[] sol = {D1/D, D2/D};
             return sol;
         }
@@ -61,7 +61,7 @@ public class Equations_2_2_6 {
             JOptionPane.showMessageDialog(null, Solve_first_degree_equation(coef), "Solution", JOptionPane.INFORMATION_MESSAGE);
         }
 
-        if (command.contains("system")){
+        else if (command.contains("system")){
             String[][] inp = new String[2][3];
             for (int i = 0; i< 2; i++){
                 for (int j = 0; j< 3; j++){
@@ -81,7 +81,7 @@ public class Equations_2_2_6 {
                 JOptionPane.showMessageDialog(null, res[1], "Solution for x2", JOptionPane.INFORMATION_MESSAGE);
             }
         }
-        if (command.contains("second")){
+        else if (command.contains("second")){
             String[] inp = new String[3];
             for (int i = 0; i< 3; i++){
                 inp[i] = JOptionPane.showInputDialog(null, "Enter the coefficients", "Input", JOptionPane.INFORMATION_MESSAGE);
