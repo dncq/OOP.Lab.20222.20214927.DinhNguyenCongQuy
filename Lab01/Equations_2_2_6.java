@@ -17,7 +17,6 @@ public class Equations_2_2_6 {
             double delta = arg[1]*arg[1] - 4*arg[0]*arg[2];
             if (delta < 0){
                 JOptionPane.showMessageDialog(null, "No real solution", "Warnig!", JOptionPane.INFORMATION_MESSAGE);
-                // System.out.println("No real solution!");
                 return null;
             }
             if (delta == 0){
@@ -32,12 +31,10 @@ public class Equations_2_2_6 {
     }
     public static double[] Solve_first_degree_SOE(double[][] arg){
         if (arg[1][0] / arg[0][0] == arg[1][1] / arg[0][1] && arg[1][0]/arg[0][0] == arg[1][2] / arg[0][2]){
-            // System.out.println("Infinite solution!"); 
             JOptionPane.showMessageDialog(null, "Infinite solution", "Warning!", JOptionPane.INFORMATION_MESSAGE);
             return null;
         }
         if (arg[1][0] / arg[0][0] == arg[1][1] / arg[0][1] && arg[1][0]/arg[0][0] != arg[1][2] / arg[0][2]){
-            // System.out.println("No solution!");
             JOptionPane.showMessageDialog(null, "No solution!", "Warning!", JOptionPane.INFORMATION_MESSAGE);
             return null;
         }
@@ -53,7 +50,6 @@ public class Equations_2_2_6 {
     public static void main(String[] arg){
         String command = JOptionPane.showInputDialog(null, "Please enter your command", "Task", JOptionPane.INFORMATION_MESSAGE);
         if (command.contains("first")){
-            // Solve first degree equation:
             String[] inp = new String[2];
             for (int i = 0; i< 2; i++){
                 inp[i] = JOptionPane.showInputDialog(null, "Enter the coefficients", "Input", JOptionPane.INFORMATION_MESSAGE);
@@ -66,7 +62,6 @@ public class Equations_2_2_6 {
         }
 
         if (command.contains("system")){
-        // Solve system of two linear equations:
             String[][] inp = new String[2][3];
             for (int i = 0; i< 2; i++){
                 for (int j = 0; j< 3; j++){
@@ -84,11 +79,9 @@ public class Equations_2_2_6 {
             else{
                 JOptionPane.showMessageDialog(null, res[0], "Solution for x1", JOptionPane.INFORMATION_MESSAGE);
                 JOptionPane.showMessageDialog(null, res[1], "Solution for x2", JOptionPane.INFORMATION_MESSAGE);
-                // System.out.println(res[i]);
             }
         }
         if (command.contains("second")){
-            // Solve second degree equation:
             String[] inp = new String[3];
             for (int i = 0; i< 3; i++){
                 inp[i] = JOptionPane.showInputDialog(null, "Enter the coefficients", "Input", JOptionPane.INFORMATION_MESSAGE);
@@ -108,6 +101,9 @@ public class Equations_2_2_6 {
                     JOptionPane.showMessageDialog(null, res[1], "Second root", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Not a valid command", "Error!", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 }
