@@ -9,7 +9,7 @@ public class Calculate_2_2_5{
         double nom1 = Double.parseDouble(num1);
         double nom2 = Double.parseDouble(num2);
         while (nom2 == 0){
-            num2 = JOptionPane.showInputDialog(null, "Cannot divide with 0! Please enter again", "Error!", JOptionPane.INFORMATION_MESSAGE);
+            num2 = JOptionPane.showInputDialog(null, "Cannot divide with 0! Please enter again!", "Error!", JOptionPane.INFORMATION_MESSAGE);
             nom2 = Double.parseDouble(num2);
         }
         double sum = nom1 + nom2;
