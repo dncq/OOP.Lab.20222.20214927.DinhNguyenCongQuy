@@ -198,7 +198,18 @@ public class ChoosingOption_6_1 {
 }
 
 - The code still runs normally
-- Use the YES_OPTION method
+- Use the JFrame class as the following:
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+public class ChoosingOption_6_1{
+	public static void main(String[] arg) {
+		JFrame frame = new JFrame();
+		String[] options = new String[2];
+		options[0] = "Agree";
+		options[1] = "Disagree";
+		JOptionPane.showOptionDialog(frame.getContentPane(), "Message!", "Title", 0, JOptionPane.INFORMATION_MESSAGE, null, options, null);
+	}
+}
 
 // Exercise 6.2:
 import java.util.Scanner;
