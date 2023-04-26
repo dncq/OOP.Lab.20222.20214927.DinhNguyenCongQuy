@@ -282,13 +282,20 @@ public class Days_of_Month_6_4 {
 			}
 		}
 		year = JOptionPane.showInputDialog(null,"Please enter the year: ","Year",JOptionPane.INFORMATION_MESSAGE);
-		int numyear = Integer.parseInt(year);
+		int numyear = 0;
 		while (true) {
-			if (numyear < 0) {
-				year = JOptionPane.showInputDialog(null,"Not a valid year.Please enter the year: ","Year",JOptionPane.INFORMATION_MESSAGE);
+			try {
 				numyear = Integer.parseInt(year);
-			} else {break;}
+				if (numyear < 0) {
+					year = JOptionPane.showInputDialog(null,"Not a valid year.Please enter the year: ","Year",JOptionPane.INFORMATION_MESSAGE);
+					numyear = Integer.parseInt(year);
+					} else {break;}
+				}
+			catch (NumberFormatException e) {
+				year = JOptionPane.showInputDialog(null,"Not a valid year.Please enter the year: ","Year",JOptionPane.INFORMATION_MESSAGE);
+			}
 		}
+			
 
 		
 		if (mon.contains(months[0]) || mon.equals("1") ||
