@@ -1,0 +1,58 @@
+initialize repo: git init
+check status:    git status
+track a file:    git add <filename>
+untrack a file:  git rm --cached <filename>
+ignore files:    Create .gitignore file
+
+Track all files: git add --all
+		     git add -A
+		     git add .
+
+Commit files:    git commit -m "<message>"
+
+Show diferences between commits: 
+		     git diff
+
+Restore from staging to working file:
+  		     git restore --staged <filename>
+
+Commit all files (include working file):
+		    git commit -a -m <message>
+
+Delete a file:  git rm <filename>
+Restore a file: git restore "<filrname>"
+Rename a file:  git mv "<current>" "<new>"
+
+Review all commits: git log
+		        git log --oneline
+
+Change the message of the previous commit
+		    git commit -m"<message>" --amend
+
+Rebase git repo: git rebase -i --root
+
+
+*Branch:
+Create new branch: git branch <branch name>
+
+Switch branch:     git switch <branch name>
+
+Merge branch:      git merge -m"<message>" <brachname>
+
+Delete branch:    git branch -d <branchname>
+
+Create and switch to new branch
+		      git switch -c <branchname>
+
+* GitHub
+Add online repo:  
+git remote add origin <URL>
+
+Set the target branch to main
+git branch -M main
+
+Push all local repo to the cloud
+git push -u origin main
+
+Push all branches:
+git push --all
