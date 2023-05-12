@@ -1,2 +1,55 @@
-//This is for Branch Organization
+// Method overloading with list
+public void addDigitalVideoDisc(DigitalVideoDisc[] dvdlist) {
+	for (DigitalVideoDisc dvd: dvdlist) {
+		if (itemsOrdered.contains(dvd)) {
+			System.out.println("The item " + dvd.getTitle() + "has is already in the cart");
+		} else if (qtyOrdered >= MAX_NUMBER_ORDERED) {
+			System.out.println("The cart is full");
+				break;
+		} else {
+			itemsOrdered.add(dvd);
+			qtyOrdered++;
+			System.out.println("The item " + dvd.getTitle() + "has been successfully added");
+		}
+	}
+}
+
+//Method overloading that accepts an arbitrary number of arguments
+public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc ... dvdlist ) {
+	dvdlist[dvdlist.length - 1] = dvd1;
+	for (DigitalVideoDisc dvd: dvdlist) {
+		if (itemsOrdered.contains(dvd)) {
+			System.out.println("The item " + dvd.getTitle() + "has is already in the cart");
+		} else if (qtyOrdered >= MAX_NUMBER_ORDERED) {
+			System.out.println("The cart is full");
+			break;
+		} else {
+			itemsOrdered.add(dvd);
+			qtyOrdered++;
+			System.out.println("The item " + dvd.getTitle() + "has been successfully added");
+		}
+	}
+}
+
+//Question:  Compare to an array parameter. What do you prefer in this case?
+--> I would prefer the method that accepts an arbitrary number of arguments, as it is much more generalized and convenient
+
+// Method overloading with different number of parameters
+public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
+	DigitalVideoDisc[] dvdlist = new DigitalVideoDisc[2];
+	dvdlist[0] = dvd1;
+	dvdlist[1] = dvd2;
+	for (int i = 0; i < 2; i++) {
+		if (itemsOrdered.contains(dvdlist[i])) {
+			System.out.println("The item " + dvdlist[i].getTitle() + " is already in cart!");
+		} else if(qtyOrdered >= MAX_NUMBER_ORDERED) {
+			System.out.println("The cart is full");
+			break;
+		} else {
+			itemsOrdered.add(dvdlist[i]);
+			qtyOrdered++;
+			System.out.println("The item " + dvdlist[i].getTitle() + "has been successfully added");
+		}
+	}
+}
 
