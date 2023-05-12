@@ -1,1 +1,13 @@
-//This is for the Release Flow exercise
+//Question:  Compare to an array parameter. What do you prefer in this case?
+--> I would prefer the method that accepts an arbitrary number of arguments, as it is much more generalized and convenient
+
+
+
+// Question: After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two 
+objects still remain?
+--> As this swap method just swap the copies of the two objects, not the objects themselves
+
+
+// Question:  After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed?
+--> Because we define the setter method inside of the DigitalVideoDisc class, so it will change to the value that we pass to this method.
+==> Java is a pass by value programming language
