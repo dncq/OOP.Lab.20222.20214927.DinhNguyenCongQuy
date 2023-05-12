@@ -8,6 +8,7 @@ public class DigitalVideoDisc {
 	//Create new attibutes for exercise 5 
 	private int id;
 	private static int nbDigitalVideoDisc = 0;
+
 	public DigitalVideoDisc() {}
 	
 	public DigitalVideoDisc(String title) {
