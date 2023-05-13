@@ -5,6 +5,36 @@ public class Cart {
 	private List<DigitalVideoDisc> itemsOrdered = new ArrayList<DigitalVideoDisc>();
 	private int qtyOrdered = 0;
 	
+	public void searchID(int ID){ 
+		if (100000 <= ID && ID <= 999999) {
+			boolean searched = false;
+			for (DigitalVideoDisc dvd: itemsOrdered) {
+				if (dvd.getID() == ID) {
+					System.out.println("DVD - " + dvd.getDetail());
+					searched = true;
+					break;
+				} 
+			} if (searched == false) {
+				System.out.println("There is no matching item!");
+			}
+		} else {
+			System.out.println("Not a valid ID!");
+		}
+		
+	}
+	public void searchTitle(String title) {
+		boolean searched = false;
+		for (DigitalVideoDisc dvd: itemsOrdered) {
+			if (dvd.getTitle().equals(title)) {
+				System.out.println("DVD - " + dvd.getDetail());
+				searched = true;
+				break;
+			} 
+		} if (searched == false) {
+			System.out.println("There is no matching item!");
+		}
+	}
+	
 	public void addDigitalVideoDisc(DigitalVideoDisc disc) {
 		if (itemsOrdered.contains(disc)) {
 			System.out.println("This disc is already in your cart");
@@ -88,6 +118,17 @@ public class Cart {
 		return qtyOrdered;
 	}
 	
+	public void print() {
+		System.out.println("***********************CART***********************");
+		System.out.println("Ordered Items:");
+		int item_no = 0;
+		for (DigitalVideoDisc dvd: itemsOrdered) {
+			item_no++;
+			System.out.println(item_no + "." + " " + "DVD - " + dvd.getDetail());
+		}
+		System.out.println("Total cost: " + this.totalCost());
+		System.out.println("***************************************************");
+	}
 	
 	
 }
