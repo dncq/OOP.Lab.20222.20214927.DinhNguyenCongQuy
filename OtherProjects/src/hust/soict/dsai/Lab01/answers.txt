@@ -1,0 +1,419 @@
+// 2.2.1:
+public class HelloWorld_2_2_1{
+	public static void main(String[] args){
+		System.out.println("Hello, World!");
+	}
+}
+
+// 2.2.2:
+import javax.swing.JOptionPane;
+public class FirstDialog_2_2_2{
+    public static void main(String[] args){
+        JOptionPane.showMessageDialog(null, "Hello World! How are you?");
+        System.exit(0);
+    }
+}
+
+// 2.2.3:
+import javax.swing.JOptionPane;
+public class HelloNameDialog_2_2_3 {
+    public static void main(String[] args){
+        String result;
+        result = JOptionPane.showInputDialog("Please enter your name:");
+        JOptionPane.showMessageDialog(null, "Hi " + result + "!");
+        System.exit(0);
+    }
+}
+
+// 2.2.4:
+import javax.swing.JOptionPane;
+public class ShowTwoNumbers_2_2_4 {
+    public static void main(String[] args){
+        String strNum1, strNum2;
+        String strNotification = "You've just entered: ";
+
+        strNum1 = JOptionPane.showInputDialog(null, "Please input the first number: ", "Input the first number: ", JOptionPane.INFORMATION_MESSAGE);
+        strNotification += strNum1 + " and ";
+
+        strNum2 = JOptionPane.showInputDialog(null, "Please input the second number: ", "Input the second number: ", JOptionPane.INFORMATION_MESSAGE);
+        strNotification += strNum2;
+
+        JOptionPane.showMessageDialog(null,strNotification, "Show two numbers", JOptionPane.INFORMATION_MESSAGE);
+        System.exit(0);
+    }
+}
+
+// 2.2.5:
+import javax.swing.JOptionPane;
+public class Calculate_2_2_5{
+    public static void main(String[] args){
+        String num1, num2;
+        num1 = JOptionPane.showInputDialog(null, "Please enter the first number", "Input the first number", JOptionPane.INFORMATION_MESSAGE);
+        num2 = JOptionPane.showInputDialog(null, "Please enter the second number", "Input the second number", JOptionPane.INFORMATION_MESSAGE);
+
+
+        double nom1 = Double.parseDouble(num1);
+        double nom2 = Double.parseDouble(num2);
+        while (nom2 == 0){
+            num2 = JOptionPane.showInputDialog(null, "Cannot divide with 0! Please enter again!", "Error!", JOptionPane.INFORMATION_MESSAGE);
+            nom2 = Double.parseDouble(num2);
+        }
+        double sum = nom1 + nom2;
+        double difference = nom1 - nom2;
+        double product = nom1*nom2;
+        double quotient = nom1 / nom2;
+
+
+        JOptionPane.showMessageDialog(null, sum, "The sum of two numbers", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, difference, "The difference of two numbers", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, product, "The product of two numbers", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, quotient, "The quotient of two numbers", JOptionPane.INFORMATION_MESSAGE);
+    }
+}
+
+// 2.2.6:
+import javax.swing.JOptionPane;
+
+public class Equations_2_2_6 {
+    public static double Solve_first_degree_equation(double[] arg){
+        if (arg[0] == 0){
+            return arg[1];
+        } else{
+            return -arg[1] / arg[0];
+        }
+    }
+    public static double[] Solve_second_degree_equation(double[] arg){
+        if (arg[0] == 0){
+            double[] res = new double[1];
+            res[0] = -arg[2] / arg[1];
+            return res;
+        }else{
+            double delta = arg[1]*arg[1] - 4*arg[0]*arg[2];
+            if (delta < 0){
+                JOptionPane.showMessageDialog(null, "No real solution", "Warnig!", JOptionPane.INFORMATION_MESSAGE);
+                return null;
+            }
+            if (delta == 0){
+                double[] res = {-arg[1]/(2*arg[0]),-arg[1]/(2*arg[0]) };
+                return res;
+            }
+            else{
+                double[] res = {(-arg[1] + Math.sqrt(delta))/(2*arg[0]),(-arg[1] - Math.sqrt(delta))/(2*arg[0])};
+                return res;
+            }
+        }
+    }
+    public static double[] Solve_first_degree_SOE(double[][] arg){
+        if (arg[1][0] / arg[0][0] == arg[1][1] / arg[0][1] && arg[1][0]/arg[0][0] == arg[1][2] / arg[0][2]){
+            JOptionPane.showMessageDialog(null, "Infinite solution", "Warning!", JOptionPane.INFORMATION_MESSAGE);
+            return null;
+        }
+        if (arg[1][0] / arg[0][0] == arg[1][1] / arg[0][1] && arg[1][0]/arg[0][0] != arg[1][2] / arg[0][2]){
+            JOptionPane.showMessageDialog(null, "No solution!", "Warning!", JOptionPane.INFORMATION_MESSAGE);
+            return null;
+        }
+        else{
+            double D = arg[0][0]*arg[1][1] - arg[1][0]*arg[0][1];
+            double D1 = arg[1][1]*arg[0][2] - arg[0][1]*arg[1][2];
+            double D2 = arg[0][0]*arg[1][2] - arg[1][0]*arg[0][2];
+            double[] sol = {D1/D, D2/D};
+            return sol;
+        }
+    }
+
+    public static void main(String[] arg){
+        String command = JOptionPane.showInputDialog(null, "Please enter your command", "Task", JOptionPane.INFORMATION_MESSAGE);
+        if (command.contains("first")){
+            String[] inp = new String[2];
+            for (int i = 0; i< 2; i++){
+                inp[i] = JOptionPane.showInputDialog(null, "Enter the coefficients", "Input", JOptionPane.INFORMATION_MESSAGE);
+            }
+            double[] coef = new double[2];
+            for (int i = 0; i< 2; i++){
+                coef[i] = Double.parseDouble(inp[i]);
+            }
+            JOptionPane.showMessageDialog(null, Solve_first_degree_equation(coef), "Solution", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        else if (command.contains("system")){
+            String[][] inp = new String[2][3];
+            for (int i = 0; i< 2; i++){
+                for (int j = 0; j< 3; j++){
+                    inp[i][j] = JOptionPane.showInputDialog(null, "Enter the coefficients", "Input", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+            double[][] coef = new double[2][3];
+            for (int i = 0; i < 2; i++){
+                for (int j = 0; j < 3; j++){
+                    coef[i][j] = Double.parseDouble(inp[i][j]);
+                }
+            }
+            double[] res = Solve_first_degree_SOE(coef);
+            if (res == null){} 
+            else{
+                JOptionPane.showMessageDialog(null, res[0], "Solution for x1", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, res[1], "Solution for x2", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+        else if (command.contains("second")){
+            String[] inp = new String[3];
+            for (int i = 0; i< 3; i++){
+                inp[i] = JOptionPane.showInputDialog(null, "Enter the coefficients", "Input", JOptionPane.INFORMATION_MESSAGE);
+            }
+            double[] coef = new double[3];
+            for (int i = 0; i<3; i++){
+                coef[i] = Double.parseDouble(inp[i]);
+            }
+
+            double[] res = Solve_second_degree_equation(coef);
+            if (res == null){}
+            else{
+                if (res.length == 1){
+                    JOptionPane.showMessageDialog(null, res[0], "Single root", JOptionPane.INFORMATION_MESSAGE);
+                } else{
+                    JOptionPane.showMessageDialog(null, res[0], "First root", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, res[1], "Second root", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Not a valid command", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+}
+
+
+
+// Exercise 6.1:
+import javax.swing.JOptionPane;
+public class ChoosingOption_6_1 {
+	public static void main(String[] arg) {
+		int option = JOptionPane.showConfirmDialog(null, 
+				"Do you want to change to the first class ticket?");
+		
+		JOptionPane.showMessageDialog(null, "You've chosen: "
+				+ (option == JOptionPane.YES_OPTION?"Yes":"No"));
+		System.exit(0);
+	}
+}
+
+- The code still runs normally
+- Use the JFrame class as the following:
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+public class ChoosingOption_6_1{
+	public static void main(String[] arg) {
+		JFrame frame = new JFrame();
+		String[] options = new String[2];
+		options[0] = "Agree";
+		options[1] = "Disagree";
+		JOptionPane.showOptionDialog(frame.getContentPane(), "Message!", "Title", 0, JOptionPane.INFORMATION_MESSAGE, null, options, null);
+	}
+}
+
+// Exercise 6.2:
+import java.util.Scanner;
+public class InputFromKeyboard_6_2 {
+	public static void main(String[] arg) {
+		Scanner keyboard = new Scanner(System.in);
+		
+		
+		System.out.println("What's your name?");
+		String strName = keyboard.nextLine();
+		System.out.println("How old are you?");
+		int iAge = keyboard.nextInt();
+		System.out.println("How tall are you? (m)");
+		double dHeight = keyboard.nextDouble();
+		
+		
+		System.out.println("Mrs/Ms. " + strName + ", " + iAge + " years old. " 
+							+ "Your height is " + dHeight + ".");
+	}
+}
+
+// Exercise 6.3:
+import java.util.Scanner;
+
+public class PrintTriangle_6_3 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the height of the triangle: ");
+        int n = input.nextInt();
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= (2*n+1); j++) {
+                if (j <= n-i || j >= n+i) {
+                    System.out.print(" ");
+                } else {
+                    System.out.print("*");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+// Exercise 6.4:
+import javax.swing.JOptionPane;
+public class Days_of_Month_6_4 {
+	public static void main(String[] arg) {
+		String mon, year;
+		String[] months = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
+
+		mon = JOptionPane.showInputDialog(null,"Please enter the month: ","Month",JOptionPane.INFORMATION_MESSAGE);
+		
+		while (true) {
+			if (mon.equals("Jan") || mon.equals("Jan.") || mon.equals("1") || mon.equals("January") ||
+				mon.equals("Feb") || mon.equals("Feb.") || mon.equals("2") || mon.equals("February") ||
+				mon.equals("Mar") || mon.equals("Mar.") || mon.equals("3") ||mon.equals("March") ||
+				mon.equals("Apr") || mon.equals("Apr.") || mon.equals("4") ||mon.equals("April") ||
+				mon.equals("May") || mon.equals("May.") || mon.equals("5") ||mon.equals("May") ||
+				mon.equals("Jun") || mon.equals("Jun.") || mon.equals("6") ||mon.equals("June") ||
+				mon.equals("Jul") || mon.equals("Jul.") || mon.equals("7") ||mon.equals("July") ||
+				mon.equals("Aug") || mon.equals("Aug.") || mon.equals("8") ||mon.equals("August") ||
+				mon.equals("Sep") || mon.equals("Sep.") || mon.equals("9") ||mon.equals("September") ||
+				mon.equals("Oct") || mon.equals("Oct.") || mon.equals("10") ||mon.equals("October") ||
+				mon.equals("Nov") || mon.equals("Nov.") || mon.equals("11") ||mon.equals("November") ||
+				mon.equals("Dec") || mon.equals("Dec.") || mon.equals("12") || mon.equals("December")){
+				break;
+			}
+			else {
+				mon = JOptionPane.showInputDialog(null,"Not a valid month!.Please enter the month: ","Month",JOptionPane.INFORMATION_MESSAGE);
+			}
+		}
+		year = JOptionPane.showInputDialog(null,"Please enter the year: ","Year",JOptionPane.INFORMATION_MESSAGE);
+		int numyear = 0;
+		while (true) {
+			try {
+				numyear = Integer.parseInt(year);
+				if (numyear < 0) {
+					year = JOptionPane.showInputDialog(null,"Not a valid year.Please enter the year: ","Year",JOptionPane.INFORMATION_MESSAGE);
+					numyear = Integer.parseInt(year);
+					} else {break;}
+				}
+			catch (NumberFormatException e) {
+				year = JOptionPane.showInputDialog(null,"Not a valid year.Please enter the year: ","Year",JOptionPane.INFORMATION_MESSAGE);
+			}
+		}
+			
+
+		
+		if (mon.contains(months[0]) || mon.equals("1") ||
+			mon.contains(months[2]) || mon.equals("3") ||
+			mon.contains(months[4]) || mon.equals("5") ||
+			mon.contains(months[6]) || mon.equals("7") ||
+			mon.contains(months[7]) || mon.equals("8") ||
+			mon.contains(months[9]) || mon.equals("10") ||
+			mon.contains(months[11]) || mon.equals("12")){
+			JOptionPane.showMessageDialog(null, "The number of days in this month is 31","Answer",JOptionPane.INFORMATION_MESSAGE);
+		}
+		if(mon.contains(months[3]) || mon.equals("1") ||
+				mon.contains(months[5]) || mon.equals("1") ||
+				mon.contains(months[8]) || mon.equals("1") ||
+				mon.contains(months[10]) || mon.equals("1")){
+			JOptionPane.showMessageDialog(null, "The number of days in this month is 30","Answer",JOptionPane.INFORMATION_MESSAGE);
+		}
+		if(mon.contains(months[1]) || mon.equals("2")) {
+			if (numyear % 4 == 0) {
+				if (numyear % 100 == 0) {
+					if (numyear % 16 != 0) {
+						JOptionPane.showMessageDialog(null, "The number of days in this month is 28","Answer",JOptionPane.INFORMATION_MESSAGE);
+					} else if (numyear % 16 == 0) {
+						JOptionPane.showMessageDialog(null, "The number of days in this month is 29","Answer",JOptionPane.INFORMATION_MESSAGE);
+					}
+				} else {
+					JOptionPane.showMessageDialog(null, "The number of days in this month is 29","Answer",JOptionPane.INFORMATION_MESSAGE);
+				}
+			} else {
+				JOptionPane.showMessageDialog(null, "The number of days in this month is 28","Answer",JOptionPane.INFORMATION_MESSAGE);
+			}
+		}
+	}
+}
+// Exercise 6.5:
+import java.util.Scanner;
+public class Sort_the_Array_6_5{
+	public static void sort(int[] arr) {
+		int swapped;
+		do {
+			swapped = 0;
+			for (int i = 0; i < arr.length - 1; i++) {
+				if (arr[i] > arr[i+1]) {
+					int tmp = arr[i+1];
+					arr[i+1] = arr[i];
+					arr[i] = tmp;
+					swapped = 1;
+				}
+			}
+		}
+		while (swapped == 1);
+	}
+	public static int sumofarray(int[] arr){
+		int sum = 0;
+		for (int i = 0; i < arr.length; i++) {
+			sum += arr[i];
+		}
+		return sum;
+	}
+	public static double average(int [] arr) {
+		return sumofarray(arr) / (arr.length);
+	}
+	public static void main(String[] arg) {
+		Scanner input = new Scanner(System.in);
+		int n = input.nextInt();
+		int[] arr = new int[n];
+		for (int i = 0; i < n; i++) { 
+			arr[i] = input.nextInt();
+		}
+		sort(arr);
+		System.out.println("The sorted array: ");
+		for (int i = 0; i < n; i++) {
+			System.out.print(arr[i] + " ");
+		}
+		System.out.println(" ");
+		System.out.println("The sum of the array: " + sumofarray(arr));
+		System.out.println("The average of the array: " + average(arr));
+	}
+}
+	
+// Exercise 6.6:
+import java.util.Scanner;
+public class SumOfMatrices_6_6 {
+	public static void main(String[] arg) {
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter the number of rows: ");
+		int m = input.nextInt();
+		System.out.println("Enter the number of columns: ");
+		int n = input.nextInt();
+		int[][] a1 = new int[m][n];
+		int[][] a2 = new int[m][n];
+		System.out.println("Entries for matrix 1: ");
+		for(int i = 0; i < m; i++) {
+			for (int j = 0; j < n; j++) {
+				a1[i][j] = input.nextInt();
+			}
+		}
+		System.out.println("Entries for matrix 2: ");
+		for(int i = 0; i < m; i++) {
+			for (int j = 0; j < n; j++) {
+				a2[i][j] = input.nextInt();
+			}
+		}
+		int[][] res = new int[m][n];
+		for (int i = 0; i < m; i++) {
+			for (int j = 0; j < n; j++) {
+				res[i][j] = a1[i][j] + a2[i][j];
+			}
+		}
+		System.out.println("Sum of the two matrices: ");
+		for (int i = 0; i < m; i++) {
+			for (int j = 0; j < n; j++) {
+				System.out.print(res[i][j] + " ");
+			}
+			System.out.println();
+		}
+	}
+}
+
+
+
