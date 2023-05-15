@@ -1,3 +1,4 @@
+package hust.soict.dsai.Lab01.SourceCodeLab01;
 import javax.swing.JOptionPane;
 public class ShowTwoNumbers_2_2_4 {
     public static void main(String[] args){

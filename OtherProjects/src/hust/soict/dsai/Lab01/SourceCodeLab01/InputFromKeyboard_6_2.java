@@ -1,3 +1,5 @@
+package hust.soict.dsai.Lab01.SourceCodeLab01;
+
 import java.util.Scanner;
 public class InputFromKeyboard_6_2 {
 	public static void main(String[] arg) {

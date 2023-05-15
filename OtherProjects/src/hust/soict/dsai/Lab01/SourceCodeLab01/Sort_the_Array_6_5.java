@@ -1,3 +1,5 @@
+package hust.soict.dsai.Lab01.SourceCodeLab01;
+
 import java.util.Scanner;
 public class Sort_the_Array_6_5{
 	public static void sort(int[] arr) {

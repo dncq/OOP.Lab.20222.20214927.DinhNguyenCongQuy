@@ -1,3 +1,4 @@
+package hust.soict.dsai.Lab01.SourceCodeLab01;
 import javax.swing.JOptionPane;
 public class Calculate_2_2_5{
     public static void main(String[] args){

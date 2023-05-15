@@ -1,3 +1,4 @@
+package hust.soict.dsai.Lab01.SourceCodeLab01;
 import javax.swing.JOptionPane;
 public class Days_of_Month_6_4 {
 	public static void main(String[] arg) {

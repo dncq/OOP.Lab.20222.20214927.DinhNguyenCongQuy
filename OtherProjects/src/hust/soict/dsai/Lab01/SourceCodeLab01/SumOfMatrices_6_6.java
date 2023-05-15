@@ -1,3 +1,5 @@
+package hust.soict.dsai.Lab01.SourceCodeLab01;
+
 import java.util.Scanner;
 public class SumOfMatrices_6_6 {
 	public static void main(String[] arg) {

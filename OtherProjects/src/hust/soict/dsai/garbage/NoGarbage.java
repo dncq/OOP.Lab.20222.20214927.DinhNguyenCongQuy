@@ -10,13 +10,13 @@ public class NoGarbage {
 		StringBuilder outputStringBuilder = new StringBuilder();
 		
 		try {
-			input = new FileReader("C:\\Users\\DELL\\eclipse-workspace\\OtherProjects\\src\\hust\\soict\\globalict\\garbage\\text.txt");
+			input = new FileReader("C:\\Eclipse Workspace\\OtherProjects\\src\\hust\\soict\\dsai\\garbage\\test.txt");
 			
 			int c;
 			while((c = input.read()) != -1) {
 				outputStringBuilder.append(c);
 			}
-			System.out.println(System.currentTimeMillis() - start);
+			System.out.println("Execution time: " + (System.currentTimeMillis() - start));
 		} finally {
 			if (input != null) {
 				input.close();

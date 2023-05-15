@@ -1,3 +1,4 @@
+package hust.soict.dsai.Lab01.SourceCodeLab01;
 import javax.swing.JOptionPane;
 
 public class Equations_2_2_6 {

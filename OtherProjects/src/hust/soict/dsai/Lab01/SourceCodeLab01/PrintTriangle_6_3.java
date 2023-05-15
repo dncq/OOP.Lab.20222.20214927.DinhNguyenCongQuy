@@ -1,3 +1,4 @@
+package hust.soict.dsai.Lab01.SourceCodeLab01;
 import java.util.Scanner;
 
 public class PrintTriangle_6_3 {
