@@ -1,0 +1,26 @@
+//Question: When should accessor methods be used?
+
+-->  Answers:
+- Accessor methods should be used whenever we need to expose the value of a private or protected field of an object to external code, in a safe and controlled way
+- Accessor method should be used when the designer can guarantee that the code would be easily maintained, i.e, needn't to modify every single classwhen some trivial changes arise.  
+
+
+//Question: If you create a constructor method to build a DVD by title then create a constructor method to build a DVD by category. Does JAVA allow you to do this?
+
+--> Yes, as JAVA allows to create multiple constructors for a class, each with a different set of parameters
+
+//Question:  Compare to an array parameter. What do you prefer in this case?
+--> I would prefer the method that accepts an arbitrary number of arguments, as it is much more generalized and convenient
+
+
+
+// Question: After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two 
+objects still remain?
+--> As this swap method just swap the copies of the two objects, not the objects themselves
+
+
+// Question:  After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed?
+--> Because we define the setter method inside of the DigitalVideoDisc class, so it will change to the value that we pass to this method.
+
+==> Java is a pass by value programming language
+
