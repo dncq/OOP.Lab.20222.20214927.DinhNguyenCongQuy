@@ -1,127 +1,105 @@
-package hust.soict.dsai.aims.disc;
+package hust.soict.dsai.aims.media;
 import java.util.Random;
-public class DigitalVideoDisc {
-	private String title;
-	private String category;
+public class DigitalVideoDisc extends Disc {
 	private String director;
 	private int length;
-	private float cost;
-	//Create new attibutes for exercise 5
-//	int seed_value = 100;
+	//Create new attributes for exercise 5
 	private int id;
 	private static int nbDigitalVideoDisc = 0;
     Random rd = new Random();
     long seedValue = nbDigitalVideoDisc;
 
-//	Random rd = new Random();
+    
+    // Constructor
 	public DigitalVideoDisc() {
+		// Generate the ID of the DVD
 		rd.setSeed(seedValue);
 		this.id = rd.nextInt(1000000 - 100000) + 100000;
 		nbDigitalVideoDisc++;
 	}
-
+	
+	
 	public DigitalVideoDisc(String title) {
-		super();
 		rd.setSeed(seedValue);
 		this.id = rd.nextInt(1000000 - 100000) + 100000;
-		this.title = title;
 		nbDigitalVideoDisc++;
+		super.setTitle(title);
 	}
 	public DigitalVideoDisc(String title, String category) {
 		super();
 		rd.setSeed(seedValue);
 		this.id = rd.nextInt(1000000 - 100000) + 100000;
-		this.title = title;
-		this.category = category;
 		nbDigitalVideoDisc++;
+		super.setTitle(title);
+		super.setCategory(category);
 	}
 	
 	public DigitalVideoDisc(String title, String category, String director) {
 		super();
 		rd.setSeed(seedValue);
 		this.id = rd.nextInt(1000000 - 100000) + 100000;
-		this.title = title;
-		this.category = category;
 		this.director = director;
 		nbDigitalVideoDisc++;
+		super.setTitle(title);
+		super.setCategory(category);
 	}
 	
 	public DigitalVideoDisc(String title, String category, int length) {
 		super();
 		rd.setSeed(seedValue);
-		this.id = rd.nextInt(1000000 - 100000) + 100000;
-		this.title = title;
-		this.category = category;
+		this.id = rd.nextInt(1000000 - 100000) + 100000;;
 		this.length = length;
 		nbDigitalVideoDisc++;
+		super.setTitle(title);
+		super.setCategory(category);
 	}
 
 	public DigitalVideoDisc(String title, String category, String director, int length) {
 		super();
 		rd.setSeed(seedValue);
 		this.id = rd.nextInt(1000000 - 100000) + 100000;
-		this.title = title;
-		this.category = category;
 		this.director = director;
 		this.length = length;
 		nbDigitalVideoDisc++;
+		super.setTitle(title);
+		super.setCategory(category);
 	}
 	
 	public DigitalVideoDisc(String title, String category, float cost) {
 		super();
 		rd.setSeed(seedValue);
 		this.id = rd.nextInt(1000000 - 100000) + 100000;
-		this.title = title;
-		this.category = category;
-		this.cost = cost;
 		nbDigitalVideoDisc++;
+		super.setTitle(title);
+		super.setCategory(category);
+		super.setCost(cost);
 	}
 	
 	public DigitalVideoDisc(String title, String category, String director, float cost) {
 		super();
 		rd.setSeed(seedValue);
 		this.id = rd.nextInt(1000000 - 100000) + 100000;
-		this.title = title;
-		this.category = category;
 		this.director = director;
-		this.cost = cost;
 		nbDigitalVideoDisc++;
+		super.setTitle(title);
+		super.setCategory(category);
+		super.setCost(cost);
 	}
 
 	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
 		super();
 		rd.setSeed(seedValue);
 		this.id = rd.nextInt(1000000 - 100000) + 100000;
-		this.title = title;
-		this.category = category;
 		this.director = director;
 		this.length = length;
-		this.cost = cost;
 		nbDigitalVideoDisc++;
+		super.setTitle(title);
+		super.setCategory(category);
+		super.setCost(cost);
 	}
 	public int getID() {
 		return id;
 	}
-	public String getTitle() {
-		if (title == null) {
-			return "Unknown";
-		}
-		return title;
-	}
-	// Add a setter
-	
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	
-
-	public String getCategory() {
-		if (category == null) {
-			return "Unknown";
-		}
-		return category;
-	}
-
 	public String getDirector() {
 		if (director == null) {
 			return "Unknown";
@@ -132,9 +110,8 @@ public class DigitalVideoDisc {
 	public int getLength() {
 		return length;
 	}
-	public float getCost() {
-		return cost;
-	}
+	
+	// Print the detail of the DVD
 	public String getDetail() {
 		if (this.getLength() == 0 && this.getCost() != 0.0) {
 			return "Title: " + this.getTitle() + " - " + 
