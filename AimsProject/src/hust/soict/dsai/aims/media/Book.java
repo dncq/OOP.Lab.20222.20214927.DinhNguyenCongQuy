@@ -1,5 +1,5 @@
 package hust.soict.dsai.aims.media;
-
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,25 +7,29 @@ import java.util.List;
 public class Book extends Media{
 	
 	// Define fields for the class
-	private int id;
 	private List<String> authors = new ArrayList<String>();
+	
 	
 	// Constructor from Superclass
 	public Book() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
+
+	public Book(String title, String category, float cost, LocalDate date) {
+		super(title, category, cost, date);
+	}
+	
+	public Book(String title, String category, float cost) {
+		super(title, category, cost);
+	}
+	
+	public Book(String title, String category, float cost, List<String> authors) {
+		super(title, category, cost);
+		this.authors = authors;
+	}
+
 
 	// Define Getter and Setter method
-	public int getId() {
-		return id;
-	}
-
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-
 	public List<String> getAuthors() {
 		return authors;
 	}

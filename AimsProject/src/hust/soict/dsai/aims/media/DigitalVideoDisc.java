@@ -1,116 +1,42 @@
 package hust.soict.dsai.aims.media;
-import java.util.Random;
+import java.time.LocalDate;
+//import java.util.Random;
 public class DigitalVideoDisc extends Disc {
+	/*
 	private String director;
 	private int length;
-	//Create new attributes for exercise 5
 	private int id;
-	private static int nbDigitalVideoDisc = 0;
+	private static Integer nbDigitalVideoDisc = 0;
     Random rd = new Random();
     long seedValue = nbDigitalVideoDisc;
-
+	*/
     
-    // Constructor
-	public DigitalVideoDisc() {
-		// Generate the ID of the DVD
-		rd.setSeed(seedValue);
-		this.id = rd.nextInt(1000000 - 100000) + 100000;
-		nbDigitalVideoDisc++;
-	}
-	
-	
-	public DigitalVideoDisc(String title) {
-		rd.setSeed(seedValue);
-		this.id = rd.nextInt(1000000 - 100000) + 100000;
-		nbDigitalVideoDisc++;
-		super.setTitle(title);
-	}
-	public DigitalVideoDisc(String title, String category) {
+    
+    public DigitalVideoDisc() {
 		super();
-		rd.setSeed(seedValue);
-		this.id = rd.nextInt(1000000 - 100000) + 100000;
-		nbDigitalVideoDisc++;
-		super.setTitle(title);
-		super.setCategory(category);
 	}
-	
-	public DigitalVideoDisc(String title, String category, String director) {
-		super();
-		rd.setSeed(seedValue);
-		this.id = rd.nextInt(1000000 - 100000) + 100000;
-		this.director = director;
-		nbDigitalVideoDisc++;
-		super.setTitle(title);
-		super.setCategory(category);
-	}
-	
-	public DigitalVideoDisc(String title, String category, int length) {
-		super();
-		rd.setSeed(seedValue);
-		this.id = rd.nextInt(1000000 - 100000) + 100000;;
-		this.length = length;
-		nbDigitalVideoDisc++;
-		super.setTitle(title);
-		super.setCategory(category);
-	}
-
-	public DigitalVideoDisc(String title, String category, String director, int length) {
-		super();
-		rd.setSeed(seedValue);
-		this.id = rd.nextInt(1000000 - 100000) + 100000;
-		this.director = director;
-		this.length = length;
-		nbDigitalVideoDisc++;
-		super.setTitle(title);
-		super.setCategory(category);
-	}
-	
+    
 	public DigitalVideoDisc(String title, String category, float cost) {
-		super();
-		rd.setSeed(seedValue);
-		this.id = rd.nextInt(1000000 - 100000) + 100000;
-		nbDigitalVideoDisc++;
-		super.setTitle(title);
-		super.setCategory(category);
-		super.setCost(cost);
+		super(title, category, cost);
 	}
 	
-	public DigitalVideoDisc(String title, String category, String director, float cost) {
-		super();
-		rd.setSeed(seedValue);
-		this.id = rd.nextInt(1000000 - 100000) + 100000;
-		this.director = director;
-		nbDigitalVideoDisc++;
-		super.setTitle(title);
-		super.setCategory(category);
-		super.setCost(cost);
-	}
-
-	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-		super();
-		rd.setSeed(seedValue);
-		this.id = rd.nextInt(1000000 - 100000) + 100000;
-		this.director = director;
-		this.length = length;
-		nbDigitalVideoDisc++;
-		super.setTitle(title);
-		super.setCategory(category);
-		super.setCost(cost);
-	}
-	public int getID() {
-		return id;
-	}
-	public String getDirector() {
-		if (director == null) {
-			return "Unknown";
-		}
-		return director;
-	}
-
-	public int getLength() {
-		return length;
+	public DigitalVideoDisc(String title, String category, float cost, int length) {
+		super(title, category, cost, length);
 	}
 	
+	public DigitalVideoDisc(String title, String category, float cost, String director) {
+		super(title, category, cost, director);
+	}
+
+	public DigitalVideoDisc(String title, String category, float cost, int length, String director) {
+		super(title, category, cost, length, director);
+	}
+
+	public DigitalVideoDisc(String title, String category, float cost, LocalDate date) {
+		super(title, category, cost, date);
+	}
+
+
 	// Print the detail of the DVD
 	public String getDetail() {
 		if (this.getLength() == 0 && this.getCost() != 0.0) {

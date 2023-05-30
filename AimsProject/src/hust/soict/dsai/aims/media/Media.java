@@ -10,12 +10,33 @@ public abstract class Media {
 	private String category;
 	private float cost;
 	private LocalDate date;
+	private static Integer nbMedia = 0;
 	
 	// Constructor from superclass
 	public Media() {
-		// TODO Auto-generated constructor stub
+		nbMedia++;
+		this.id = Integer.parseInt(nbMedia.toString());
 	}
 	
+	
+	public Media( String title, String category, float cost) {
+		nbMedia++;
+		this.id = Integer.parseInt(nbMedia.toString());
+		this.title = title;
+		this.category = category;
+		this.cost = cost;
+	}
+
+
+	public Media(String title, String category, float cost, LocalDate date) {
+		nbMedia++;
+		this.id = Integer.parseInt(nbMedia.toString());
+		this.title = title;
+		this.category = category;
+		this.cost = cost;
+		this.date = date;
+	}
+
 	// Define Getter and Setter methods
 	public int getId() {
 		return id;

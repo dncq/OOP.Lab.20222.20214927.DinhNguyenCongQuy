@@ -2,11 +2,10 @@ package hust.soict.dsai.aims.media;
 
 public class Track {
 	
-	private String title;
+	private String title = "Null";
 	private int length;
 	
 	public Track() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	

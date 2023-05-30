@@ -1,6 +1,5 @@
 package hust.soict.dsai.aims.cart;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
 public class Cart {
@@ -9,21 +8,16 @@ public class Cart {
 	private int qtyOrdered = 0;
 	
 	public void searchID(int ID){ 
-		if (100000 <= ID && ID <= 999999) {
-			boolean searched = false;
-			for (DigitalVideoDisc dvd: itemsOrdered) {
-				if (dvd.getID() == ID) {
-					System.out.println("DVD - " + dvd.getDetail());
-					searched = true;
-					break;
-				} 
-			} if (searched == false) {
-				System.out.println("There is no matching item!");
-			}
-		} else {
-			System.out.println("Not a valid ID!");
+		boolean searched = false;
+		for (DigitalVideoDisc dvd: itemsOrdered) {
+			if (dvd.getId() == ID) {
+				System.out.println("DVD - " + dvd.getDetail());
+				searched = true;
+				break;
+			} 
+		} if (searched == false) {
+			System.out.println("There is no matching item!");
 		}
-		
 	}
 	public void searchTitle(String title) {
 		boolean searched = false;
