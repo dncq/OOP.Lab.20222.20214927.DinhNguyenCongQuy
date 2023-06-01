@@ -1,26 +1,50 @@
-//Question: When should accessor methods be used?
+Q9:
+Q:Which classes are aggregates of other classes ?
 
--->  Answers:
-- Accessor methods should be used whenever we need to expose the value of a private or protected field of an object to external code, in a safe and controlled way
-- Accessor method should be used when the designer can guarantee that the code would be easily maintained, i.e, needn't to modify every single classwhen some trivial changes arise.  
+A:Cart and Store can be considered the aggregates of multiple classes, including Media, DigitalVideoDisc, Book, CompactDisc.
+CompactDisc is the aggregate of Track.
+
+Q10:
+Q:When overriding the equals() method of the Object class, you will have to cast the Object parameter obj to the type of Object that you are dealing with.
+ For example, in the Media class, you must cast the Object obj to a Media, and then check the equality of the two objects’ 
+attributes as the above requirements (i.e. title for Media; title and length for Track). If the passing object is not an instance of Media, what happens? 
+
+A:The equals() method will return false as if an object is not an instance of Media, it will not pass through if-else loop to get to return true, 
+the method equals() returns false if object cannot get pass if-condition.
+
+Q:11:
+Q:Iterate through the list and print out the information of the media by using toString() method. Observe what happens and explain in detail.
+
+A: toString() method is overriden by 3 classese: cd, book, dvd. 
+Whenever invoked by a subclass of Media, it will perform corresponding toString() but not toString() of the Media class (if it has one).
+
+Q12:
+Q:What class should implement the Comparable interface? 
+
+A: In our project, the Media class with COMPARE_BY_TITLE_COST and COMPARE_BY_COST_TITLE should be the one implementing Comparator interface.
 
 
-//Question: If you create a constructor method to build a DVD by title then create a constructor method to build a DVD by category. Does JAVA allow you to do this?
+Q:In those classes, how should you implement the compareTo()method be to reflect the ordering that we want? 
 
---> Yes, as JAVA allows to create multiple constructors for a class, each with a different set of parameters
-
-//Question:  Compare to an array parameter. What do you prefer in this case?
---> I would prefer the method that accepts an arbitrary number of arguments, as it is much more generalized and convenient
-
+A: In my code, I overrode the compare() method from Comparator interface (not compareTo() method from Comparable interface).
+So we want the the alphabetical order and the higher cost comes first, to do this, we need the one comes before in alphabetical order and 
+higher in the price return negative value (such as -1, or -2, ...) when compared to the one that comes later or lower in the price.
 
 
-// Question: After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two 
-objects still remain?
---> As this swap method just swap the copies of the two objects, not the objects themselves
+Q:Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this Comparable interface approach? 
+
+A: Again, I'm using Comparator interface and assume that the question is about this interface (I believe Comparabale interface with compareTo() method can be overriden in the same way).
+This is possible, e.g. MediaComparatorByCostTitle(). In this method, I'll compare them by cost first, if costs are equal, then it doesn't
+return anything but process to the compare the title.
 
 
-// Question:  After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed?
---> Because we define the setter method inside of the DigitalVideoDisc class, so it will change to the value that we pass to this method.
+Q:Suppose the DVDs has a different ordering rule from the other media types, that is by title, then decreasing length, then cost. How would you modify your code to allow this? 
 
-==> Java is a pass by value programming language
+A: There are several ways to set a different ordering rule for DVD.
+One way is to implement Comparator interface and override the compare() method in a different way in DVD.
+You can contain this new overriden compare() method in sth like DVDCompareByTitleLengthCost and then create:
+public static final Comparator<DigitalVideoDisc> DVD_COMPARE_BY_TITLE_LENGTH_COST = new DVDCompareByTitleLengthCost();
 
+Alternatively, you can remove the "final static" in COMPARE_BY_TITLE_COST variable in Media class (technically they are defined as a variable of 
+Comparator<Media> type) and overriden this COMPARE_BY_TITLE_COST or whatever name it has in the DVD class.
+In this way, it can be considered as a polymorphism.

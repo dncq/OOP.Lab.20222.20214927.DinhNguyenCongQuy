@@ -1,7 +1,6 @@
 package hust.soict.dsai.aims.media;
 import java.time.LocalDate;
-//import java.util.Random;
-public class DigitalVideoDisc extends Disc {
+public class DigitalVideoDisc extends Disc implements Playable {
 	/*
 	private String director;
 	private int length;
@@ -11,7 +10,11 @@ public class DigitalVideoDisc extends Disc {
     long seedValue = nbDigitalVideoDisc;
 	*/
     
-    
+	public void play() {
+		System.out.println("Playing DVD: " + this.getTitle());
+		System.out.println("DVD length: " + this.getLength());
+	}
+	
     public DigitalVideoDisc() {
 		super();
 	}
@@ -36,7 +39,11 @@ public class DigitalVideoDisc extends Disc {
 		super(title, category, cost, date);
 	}
 
-
+    @Override
+    public String toString() {
+        return getId() + ". DVD - " + getTitle() + " - " + getCategory() + " - " + getDirector()
+                + " - " + getLength() + ": " + getCost() + "$";
+    }
 	// Print the detail of the DVD
 	public String getDetail() {
 		if (this.getLength() == 0 && this.getCost() != 0.0) {

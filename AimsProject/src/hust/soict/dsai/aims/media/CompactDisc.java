@@ -1,14 +1,20 @@
 package hust.soict.dsai.aims.media;
 
-import java.util.List;
+import java.util.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
 
-public class CompactDisc extends Disc{
+public class CompactDisc extends Disc implements Playable {
 	
+
 	private String artist;
 	private List<Track> tracks = new ArrayList<Track>();
 	
+	
+	public void play() {
+		for(Track track: tracks) {
+			track.play();
+		}
+	}
 	public CompactDisc() {
 		super();
 	}
@@ -17,29 +23,13 @@ public class CompactDisc extends Disc{
 		super(title, category, cost);
 	}
 	
-	public CompactDisc(String title, String category, float cost, int length) {
-		super(title, category, cost, length);
-	}
-	
 	public CompactDisc(String title, String category, float cost, String director) {
 		super(title, category, cost, director);
 	}
 	
-	public CompactDisc(String title, String category, float cost, int length, String director) {
-		super(title, category, cost, length, director);
-	}
-
-
 	public CompactDisc(String title, String category, float cost, LocalDate date) {
 		super(title, category, cost, date);
 	}
-
-
-
-
-
-
-
 
 	public String getArtist() {
 		return artist;
@@ -53,6 +43,8 @@ public class CompactDisc extends Disc{
 			System.out.println("The track is added");
 		}
 	}
+	
+	
 	public void removeTrack(Track track) {
 		if (tracks.isEmpty()) {
 			System.out.println("The list is empty");
@@ -71,6 +63,19 @@ public class CompactDisc extends Disc{
 		return length;
 	}
 	
+	@Override
+	public String toString() {
+	    StringBuilder sb = new StringBuilder();
+	    sb.append("Compact Disc Information:\n");
+	    sb.append("Title: ").append(getTitle()).append("\n");
+	    sb.append("Category: ").append(getCategory()).append("\n");
+	    sb.append("Cost: ").append(getCost()).append("\n");
+	    sb.append("Artist: ").append(artist).append("\n");
+	    sb.append("Number of Tracks: ").append(tracks.size()).append("\n");
+	    sb.append("Total Length: ").append(getLength()).append(" minutes").append("\n");
+	    sb.append("ID: ").append(getId()).append("\n");
+	    return sb.toString();
+	}
 	
 	
 }

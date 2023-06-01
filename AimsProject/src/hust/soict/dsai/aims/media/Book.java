@@ -33,11 +33,6 @@ public class Book extends Media{
 	public List<String> getAuthors() {
 		return authors;
 	}
-
-
-	public void setAuthors(List<String> authors) {
-		this.authors = authors;
-	}
 	
 	// Create addAuthor method
 	public void addAuthor(String authorName) {
@@ -64,5 +59,16 @@ public class Book extends Media{
 			System.out.println("The author's name has been deleted");
 		}
 	}		
+	@Override
+	public String toString() {
+	    StringBuilder sb = new StringBuilder();
+	    sb.append("Book Information:\n");
+	    sb.append("Title: ").append(getTitle()).append("\n");
+	    sb.append("Category: ").append(getCategory()).append("\n");
+	    sb.append("Cost: ").append(getCost()).append("\n");
+	    sb.append("Authors: ").append(getAuthors()).append("\n");
+	    sb.append("ID: ").append(getId()).append("\n");
+	    return sb.toString();
+	}
 		
 }

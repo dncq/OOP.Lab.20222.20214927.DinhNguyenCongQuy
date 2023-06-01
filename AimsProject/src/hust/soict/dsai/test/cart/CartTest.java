@@ -3,7 +3,7 @@ import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
 
 public class CartTest {
-
+	/*
 	public static void main(String[] args) {
 		// Create a new cart
 		Cart cart = new Cart();
@@ -39,4 +39,5 @@ public class CartTest {
 //		System.out.println(dvd4.getID());
 //		System.out.println(dvd5.getID());
 	}
+	*/
 }

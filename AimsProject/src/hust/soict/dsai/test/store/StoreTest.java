@@ -3,6 +3,7 @@ import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.store.Store;
 
 public class StoreTest {
+	/*
 	public static void main(String[] args) {
 		//Create a new store
 		Store myStore = new Store();
@@ -30,4 +31,5 @@ public class StoreTest {
 		myStore.removeDVD(dvd1);
 		System.out.println("Number of dvd is: " +myStore.getQtyAvailableDVD());
 	}
+	*/
 }
